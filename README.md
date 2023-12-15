@@ -1,4 +1,4 @@
-# Intrusion Detection System
+# Basic Log Intrusion Detector in Python
 
 This Python program performs intrusion detection based on log analysis to identify suspicious login attempts.
 
