@@ -8,7 +8,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 venv/
-py_int_log_detector_venv/
+py-intrusion-detector.venv
 env/
 build/
 develop-eggs/
