@@ -1,11 +1,42 @@
 import time
+import sys
 
 def read_log_file(log_file):
-    with open(log_file, 'r') as file:
-        return file.readlines()
+    """
+    Reads a log file and returns a list of log entries.
+
+    Args:
+    - log_file (str): The path to the log file.
+
+    Returns:
+    - list: A list containing log entries read from the file.
+    """
+    try:
+        with open(log_file, 'r', encoding='utf-8') as file:
+            return file.readlines()
+    except FileNotFoundError:
+        print(f"Error: Log file '{log_file}' not found.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error reading log file: {e}")
+        sys.exit(1)
 
 def detect_intrusion(log_entries, max_attempts=3, time_window=60):
+    """
+    Detects potential intrusion attempts based on failed login attempts within a specified time window.
+
+    Args:
+    - log_entries (list): A list of log entries to be analyzed.
+    - max_attempts (int): Maximum number of failed login attempts allowed within the time window.
+    - time_window (int): Time window in seconds within which the attempts are counted.
+
+    Returns:
+    - tuple: A tuple containing a boolean indicating whether intrusion is detected and the suspicious IP address.
+    """
     ip_attempts = {}
+    # Rest of the function remains unchanged
+    # ...
+
     for entry in log_entries:
         parts = entry.split()
         if len(parts) >= 5 and parts[-2] == 'failed' and parts[-1] == 'attempt':
